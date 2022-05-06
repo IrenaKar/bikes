@@ -5,28 +5,28 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 20px 20px 20px;
+  margin: 0 20px;
   .navbar,
   .icons-menu {
     list-style-type: none;
     display: flex;
     justify-content: space-between;
   }
-  .navbar a {
+  .navbar li a {
     text-decoration: none;
     color: black;
     text-transform: uppercase;
     font-weight: bold;
-    margin-right: 20px;
-    margin-top: 20px;
+    padding: 10px;
   }
-  .navbar a:not(last-of-type) {
-    margin-right: 50px;
+  .navbar li a:not(last-of-type) {
+    margin-right: 10px;
   }
 
   .logo {
     width: 100px;
     margin-top: 20px;
+    margin-bottom: 20px;
   }
   .logo img {
     width: 100%;
@@ -43,8 +43,13 @@ const HeaderWrapper = styled.div`
   .icons-menu .fas:first-child {
     padding-right: 10px;
   }
-  li {
+  .navbar li {
     align-self: center;
+  }
+  .navbar li a:hover {
+    text-decoration: none;
+    background-color: #e7e7e7;
+    color: orange;
   }
 `;
 export default function Header() {

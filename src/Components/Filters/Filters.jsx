@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const FilterWrapper = styled.li`
-  width: 170px;
   margin-left: 20px;
   list-style-type: none;
   display: flex;
@@ -10,13 +9,18 @@ const FilterWrapper = styled.li`
   align-items: center;
   cursor: pointer;
   font-weight: 500;
-  :hover,
+  &:hover,
   .active {
     color: orange;
   }
-  :hover .badge,
-  .active .badge {
-    background: orange;
+  &:hover .badge,
+  .active-badge {
+    background-color: orange;
+    color: #5c5c5c;
+    border-radius: 15px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: bold;
   }
   .active {
     font-weight: 600;
@@ -38,21 +42,22 @@ export default function Filters({
   selectedData,
   bikes,
   handleClick,
+  active,
+  toggleActive,
 }) {
-
   return (
     <>
       <FilterWrapper
- 
         filter={filterType}
         onClick={(e) => {
           filterType === "all" ? showAll(e) : filters(e);
-        
-
+          toggleActive(selectedData);
         }}
       >
-        <span     >{selectedData}</span>
-        <span className="badge">
+        <span className={active !== selectedData ? "" : "active"}>
+          {selectedData}
+        </span>
+        <span className={active !== selectedData ? "badge" : "active-badge"}>
           {" "}
           {filterType === "all"
             ? bikes.length

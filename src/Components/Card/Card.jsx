@@ -46,7 +46,6 @@ const Wrapper = styled.div`
   }
 `;
 export default function Card({ name, image, price, brand, gender }) {
-
   return (
     <Wrapper>
       <a href="/" className="card">

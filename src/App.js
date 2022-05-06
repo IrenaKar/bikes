@@ -4,10 +4,11 @@ import Card from "./Components/Card/Card";
 import styled from "styled-components";
 import Header from "./Components/Header/Header";
 import FiltersTitle from "./Components/Filters/FiltersTitle";
+import Footer from "./Components/Footer/Footer";
 
 const Container = styled.div`
   background-color: white;
-  width: 70%;
+  width: 80%;
   margin: auto;
   hr {
     border: 1px solid #e7e7e7;
@@ -17,7 +18,7 @@ const Container = styled.div`
     margin: 20px;
     font-size: 50px;
   }
-  .side-menu {
+  .content {
     display: flex;
   }
   .side-bar {
@@ -85,7 +86,7 @@ function App() {
         </div>
         <hr />
       </div>
-      <div className="side-menu">
+      <div className="content">
         <div className="side-bar">
           <FiltersTitle
             filterBrands={filterBrands}
@@ -129,6 +130,7 @@ function App() {
             })}
         </div>
       </div>
+      <Footer />
     </Container>
   );
 }

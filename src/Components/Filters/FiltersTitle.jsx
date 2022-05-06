@@ -3,17 +3,17 @@ import Filters from "./Filters";
 import styled from "styled-components";
 
 const SideMenuWrapper = styled.div`
-  h3 {
-    margin: 0 30px;
+  width: 280px;
+  h3,
+  h4 {
+    margin: 10px 20px 0 20px;
     font-weight: 600;
+    text-transform: uppercase;
   }
 
-  h4 {
-    font-weight: 600;
-    margin: 0 30px;
-  }
   ul {
     padding-left: 0;
+    margin-top: 0;
   }
 `;
 export default function FiltersTitle({
@@ -22,21 +22,26 @@ export default function FiltersTitle({
   showAll,
   handleClick,
   bikes,
-  
 }) {
+  const [active, setActive] = useState({
+    "Show all": true,
+  });
+
+  function toggleActive(selectedData) {
+    setActive(selectedData);
+  }
 
   return (
     <SideMenuWrapper>
       <h3>Filter by:</h3>
       <ul className="sub-menu">
         <Filters
-          filters={filters}
-          filterBrands={filterBrands}
           filterType="all"
           selectedData="Show all"
           showAll={showAll}
           bikes={bikes}
-     
+          active={active}
+          toggleActive={toggleActive}
         />
       </ul>
       <hr />
@@ -44,22 +49,21 @@ export default function FiltersTitle({
       <ul className="sub-menu">
         <Filters
           filters={filters}
-          filterBrands={filterBrands}
           filterType="gender"
           selectedData="Male"
-          showAll={showAll}
           handleClick={handleClick}
           bikes={bikes}
-                       />
+          active={active}
+          toggleActive={toggleActive}
+        />
         <Filters
           filters={filters}
-          filterBrands={filterBrands}
           filterType="gender"
           selectedData="Female"
-          showAll={showAll}
           handleClick={handleClick}
           bikes={bikes}
-   
+          active={active}
+          toggleActive={toggleActive}
         />
       </ul>
       <hr />
@@ -75,6 +79,8 @@ export default function FiltersTitle({
               selectedData={item.brand}
               handleClick={handleClick}
               bikes={bikes}
+              active={active}
+              toggleActive={toggleActive}
             />
           );
         })}
